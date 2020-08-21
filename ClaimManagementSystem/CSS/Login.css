@@ -1,0 +1,58 @@
+.body{
+    height: 100vh;
+    padding-top:4.2rem;
+    padding-bottom:4.2rem;
+    background:lightblue;
+}
+
+.center{
+    padding-top: 10%;
+}
+
+.container {
+    max-width: 1140px;
+}
+    
+.myform{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 1rem;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 1.1rem;
+    outline: 0;
+    max-width: 500px;
+}
+
+.tx-tfm{
+     text-transform:uppercase;
+}
+
+.mybtn{
+     border-radius:50px;
+}
+
+/* .row{
+    padding-top: 12em;
+} */
+
+.validationSummary {
+    padding: 1em;
+    box-shadow: 0 0 10px darkcyan;
+    margin-top: 1em;
+}
+  
+.valid {
+    display: none;
+}
+  
+.invalid {
+    display: block;
+    color: red;
+}

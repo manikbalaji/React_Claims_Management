@@ -1,0 +1,39 @@
+table{
+    margin-top: 1em;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+th{
+  border: 1px solid black;
+  text-align: center;
+}
+
+td{
+    border: 1px solid black;
+    text-align: center;
+}
+
+.edit{
+    color: black;
+    text-transform: lowercase;
+    text-decoration: none;
+}
+
+.edit:hover{
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+
+td i{
+    padding-right: 5px;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(164, 197, 218);
+  /* background-color: tan; */
+}

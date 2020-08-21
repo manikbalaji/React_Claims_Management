@@ -1,0 +1,103 @@
+body{
+    background:lightblue;
+    /* background: url(https://www.w3schools.com/css/paper.gif); */
+    margin: 0;
+    }
+
+header{
+    height: 70px;
+    text-align: center;
+    padding-top: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: larger;
+    background-color: black;
+    color: white;
+    display: grid;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #111;
+    text-decoration: none;
+    color: white;
+  }
+
+  .textcenter{
+    text-align: center;
+    padding-top: 10%;
+  }
+
+  .loginheader{
+    text-align: center;
+    background-color: black;
+    color: white;
+  }
+  
+  footer{
+      text-align: center;
+      background-color: black;
+      color: white;
+      height: 50px;
+      line-height: 40px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+  }
+
+  .userDetails{
+    display: inline;
+    font-size: smaller;
+    font-weight: normal;
+    text-transform: none;
+}
+
+.right{
+    position: absolute;
+    right: 5em;
+    word-spacing: 5px;
+}
+
+.left-align{
+    width: 300px;
+    text-align: left;
+}
+
+.contact{
+    background-color: transparent;
+    display: grid;
+    padding: 20px;
+    list-style-position: inside;
+    text-align: center;
+}
+
+.list{
+line-height: 4em;
+font-size: xx-large;
+font-weight: 500;
+}
+
+@media only screen and (max-width: 600px) {
+    .columns {
+      width: 100%;
+    }
+  }
