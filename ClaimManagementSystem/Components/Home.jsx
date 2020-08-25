@@ -13,12 +13,14 @@ class Home extends React.Component{
             </div>
         ];
         return(
-            <div id="content">
+            // <div id="content">
+            <React.Fragment>
                 <Header/>
                 <Menu/>
                 {content}
                 <Footer/>
-            </div>
+            </React.Fragment>
+            // </div>
         );
     }
 }

@@ -8,6 +8,8 @@ import ContactUs from './Components/ContactUs.jsx';
 import Sample from './Components/Sample.jsx';
 import AppRouter from './Components/AppRouter.jsx';
 import { Route, Router, browserHistory, Switch, withRouter } from 'react-router';
+import {Provider} from 'react-redux';
+import {store} from './Store/Store.js';
 import Menu from './Components/Menu.jsx';
 // import './CSS/Login.css';
 
@@ -18,7 +20,8 @@ import Menu from './Components/Menu.jsx';
 //ReactDOM.render(<AppRouter/>,document.getElementById('app'));
 
 ReactDOM.render((
-    <Router history = {browserHistory}>
+    <Provider store={store}>
+        <Router history = {browserHistory}>
             <Route path="/ClaimSummary" component={ClaimSummary}>
             </Route>
             <Route path="/Home" component={Home}>
@@ -31,5 +34,6 @@ ReactDOM.render((
             </Route>
             <Route exact path="/" component={Login}>
             </Route>
-   </Router>
+        </Router>
+   </Provider>
 ),document.getElementById('app'));

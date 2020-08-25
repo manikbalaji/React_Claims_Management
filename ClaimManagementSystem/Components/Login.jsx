@@ -3,6 +3,9 @@ import axios from 'axios';
 import '../CSS/Login.css';
 import { Logger } from "react-logger-lib";
 import {store} from '../Store/Store.js';
+import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {getsUsersList} from '../Actions/login'
 
 class Login extends React.Component{
     constructor(props){
@@ -26,20 +29,22 @@ class Login extends React.Component{
     };
     
     componentDidMount() {
-        axios.get(`http://localhost:7000/users`)
-          .then(res => {
-            Logger.of('App.Login.componentDidlMount').info('List of Users retreived', res.data);
-            const users = res.data;
-            this.setState({ users });
-          })
-          .catch(error=>{
-            Logger.of('App.Login.componentDidlMount').error('Error retreiving list of Users',error);
-          })
+        this.props.getsUsersList();
+        // axios.get(`http://localhost:7000/users`)
+        //   .then(res => {
+        //     Logger.of('App.Login.componentDidlMount').info('List of Users retreived', res.data);
+        //     const users = res.data;
+        //     this.setState({ users });
+        //   })
+        //   .catch(error=>{
+        //     Logger.of('App.Login.componentDidlMount').error('Error retreiving list of Users',error);
+        //   })
+        // this.props.actions.getUsers();
       }
 
     checkAuthentication(){
         let userNameMismatch = false, passwordMismatch = false;
-        const users = this.state.users;
+        const users = this.props.userList;
         const res = users.find(user => user.username == this.state.userName);
         if(res == undefined){
             userNameMismatch = true;
@@ -116,8 +121,8 @@ class Login extends React.Component{
                 // store.subscribe(() =>
                 // alert(store.getState().loggedInUser)
                 // );
-                sessionStorage.userName = this.state.userName;
-                sessionStorage.loginTime = new Date().toLocaleString().replace(/,/, ' ');
+                // sessionStorage.userName = this.state.userName;
+                // sessionStorage.loginTime = new Date().toLocaleString().replace(/,/, ' ');
                 this.setState({
                     isValid: isAuthenticUser,
                     userNameError,
@@ -139,7 +144,6 @@ class Login extends React.Component{
      }
 
     render(){
-
         let body = [
             <div key="lcontainer" className="container center">
                 <div key="lrow" className="row">
@@ -159,7 +163,7 @@ class Login extends React.Component{
                                         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"/>
                                     </div>
                                     <div className="col-md-12 text-center ">
-                                        <input type="button" className=" btn btn-block mybtn btn-primary tx-tfm" onClick={this.handleSubmit} value="Login"></input>
+                                        <input id="login" type="button" className=" btn btn-block mybtn btn-primary tx-tfm" onClick={this.handleSubmit} value="Login"></input>
                                     </div>
                                 </form>
                             </div>
@@ -188,4 +192,25 @@ class Login extends React.Component{
     }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+    return {
+    username: state.loggedInUser,
+    password: state.loggedInTime,
+    userList: state.users
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    //const dispatchFunction = () => dispatch(getUsers)
+    return bindActionCreators({getsUsersList},dispatch)
+        //getUsers: dispatchFunction
+        
+};
+
+export default connect(
+    mapStateToProps,
+    // mapDispatchToProps
+    {getsUsersList}
+    //dispatch => bindActionCreators(actionCreators,dispatch)
+)(Login);
+// export default Login;

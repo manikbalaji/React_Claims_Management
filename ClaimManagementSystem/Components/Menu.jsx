@@ -4,16 +4,16 @@ import '../CSS/Common.css'
 
 class Menu extends React.Component{
     render(){
-        let menu = [
+        // let menu = [
             
-                <ul>
-                    <li id="home"><a href="Home"><i className="fas fa-home fa-fw"></i> Home</a></li>
-                    <li id="update"><a href="javascript:void(0);" onClick="editRowFromLink()">Update Claim</a></li> 
-                    <li id="about"><a href="About"><i className="fa fa-address-card fa-fw"></i> About</a></li>
-                    <li id="contact"><a href="ContactUs"><i className="fa fa-phone fa-fw"></i> Contact Us</a></li>
-                    <li id="logout"><a href="/" className="right"><i className="fa fa-sign-out-alt fa-fw"></i>Logout</a></li>
-                </ul>
-        ];
+        //         <ul>
+        //             <li id="home"><a href="Home"><i className="fas fa-home fa-fw"></i> Home</a></li>
+        //             <li id="update"><a href="javascript:void(0);" onClick="editRowFromLink()">Update Claim</a></li> 
+        //             <li id="about"><a href="About"><i className="fa fa-address-card fa-fw"></i> About</a></li>
+        //             <li id="contact"><a href="ContactUs"><i className="fa fa-phone fa-fw"></i> Contact Us</a></li>
+        //             <li id="logout"><a href="/" className="right"><i className="fa fa-sign-out-alt fa-fw"></i>Logout</a></li>
+        //         </ul>
+        // ];
 
         let sample = [
             // <ul>
@@ -36,9 +36,11 @@ class Menu extends React.Component{
         ];
 
         return(
-            <div id="menu">
+            // <div id="menu">
+            <React.Fragment>
                 {sample}
-            </div>
+            </React.Fragment>
+            // </div>
         );
     }
 }
