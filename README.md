@@ -1,1 +1,0 @@
-# React_Claims_Management
