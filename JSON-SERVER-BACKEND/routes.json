@@ -1,0 +1,8 @@
+{
+    "/claims/list": "/claims",
+    "/claims/get/:EmployeeId": "/claims/:EmployeeId",
+    "/claims/create": "/claims",
+    "/claims/update/:EmployeeId": "/claims/:EmployeeId",
+    "/claims/delete/:EmployeeId": "/claims/:EmployeeId"
+}
+

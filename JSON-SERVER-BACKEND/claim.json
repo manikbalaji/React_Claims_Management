@@ -1,0 +1,49 @@
+{
+  "claims": [
+    {
+      "EmployeeId": 1,
+      "EmployeeName": "Test1",
+      "ClaimNumber": "1",
+      "ClaimType": "Received",
+      "ClaimProgram": "Life Insurance",
+      "StartDate": "08/12/2020",
+      "EndDate": "12/12/2020"
+    },
+    {
+      "EmployeeId": 2,
+      "EmployeeName": "Test2",
+      "ClaimNumber": "2",
+      "ClaimType": "Submitted",
+      "ClaimProgram": "Life Insurance",
+      "StartDate": "08/12/2020",
+      "EndDate": "12/12/2020"
+    },
+    {
+      "EmployeeId": 3,
+      "EmployeeName": "Test3",
+      "ClaimNumber": "3",
+      "ClaimType": "Pending",
+      "ClaimProgram": "Vehicle Insurance",
+      "StartDate": "08/12/2020",
+      "EndDate": "12/12/2020"
+    },
+    {
+      "EmployeeId": 4,
+      "EmployeeName": "Test4",
+      "ClaimNumber": "4",
+      "ClaimType": "Rejected",
+      "ClaimProgram": "Vehicle Insurance",
+      "StartDate": "08/12/2020",
+      "EndDate": "12/12/2020"
+    },
+    {
+      "EmployeeId": 5,
+      "EmployeeName": "Test5",
+      "ClaimNumber": "5",
+      "ClaimType": "More Info Required",
+      "ClaimProgram": "Life Insurance",
+      "StartDate": "08/12/2020",
+      "EndDate": "12/12/2020"
+    }
+  ]
+}
