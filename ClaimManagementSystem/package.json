@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --hot",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage --coverageDirectory=output/coverage/jest",
+    "lint": "eslint **/*.js **/*.jsx"
   },
   "author": "Mani",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "bootstrap": "^4.5.2",
     "css-loader": "3.2.0",
     "history": "^5.0.0",
+    "moment": "^2.27.0",
     "react": "^16.7.0",
     "react-bootstrap": "^1.3.0",
     "react-dom": "^16.7.0",
@@ -27,8 +29,39 @@
     "react-router": "^3.0.2",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "style-loader": "1.1.3",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.3.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.3",
+    "eslint": "^7.7.0",
+    "eslint-plugin-react": "^7.20.6",
+    "jest": "^26.4.1",
+    "jest-cli": "^26.4.1",
+    "redux-mock-store": "^1.5.4"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/_tests_/jestTransform.js"
+    },
+    "moduleNameMapper": {
+      "\\.css$": "<rootDir>/_tests_/_mocks_/styleMock.js"
+    },
+    "setupFiles": [
+      "<rootDir>/_tests_/setupTests.js"
+    ]
   }
 }

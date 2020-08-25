@@ -1,8 +1,12 @@
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+
+const middleware = applyMiddleware(thunk);
 
 const initialState = {
     loggedInUser: "",
     loggedInTime: "",
+    users: [],
     claimList: []
 }
 
@@ -18,6 +22,12 @@ const reducer=(state,action)=>{
     // }
    
     //    return state;
+
+    if(action.type==='GET_USERS'){
+        return Object.assign({}, state, {
+            users: action.payload
+        })
+    }
 
     if(action.type==='ClaimList'){
         return Object.assign({}, state, {
@@ -36,4 +46,4 @@ const reducer=(state,action)=>{
 
    };
 
-export const store = createStore(reducer ,initialState);
+export const store = createStore(reducer ,initialState, middleware);

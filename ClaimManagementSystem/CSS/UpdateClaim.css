@@ -16,6 +16,14 @@
     border-radius: 1.1rem; */
 }
 
+.errorField{
+    border: 2px solid red;
+}
+
+.errorLabel{
+    color: red;
+}
+
 /*
 form{
     box-shadow: 0 0 10px darkcyan;

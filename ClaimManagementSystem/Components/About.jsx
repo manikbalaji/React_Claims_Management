@@ -7,7 +7,7 @@ import Footer from './Footer.jsx'
 class About extends React.Component{
     render(){
         let content = [
-            <div className="box">
+            <div id="about" className="box">
                 <h3>Vision</h3>
                 <p>To become the number one service and consultancy firm for Digitalizing Businesses</p>
                 <h3>Mission</h3>
@@ -22,12 +22,12 @@ class About extends React.Component{
             </div>
         ];
         return(
-            <div id="about">
+            <React.Fragment>
                 <Header/>
                 <Menu/>
                 {content}
                 <Footer/>
-            </div>
+            </React.Fragment>
         );
     }
 }

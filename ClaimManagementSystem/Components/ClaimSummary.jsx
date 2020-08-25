@@ -8,6 +8,7 @@ import UpdateClaim from './UpdateClaim.jsx'
 import axios from 'axios'
 import {Logger} from 'react-logger-lib'
 import {store} from '../Store/Store.js'
+import {connect} from 'react-redux';
 
 class ClaimSummary extends React.Component{
     constructor(props){
@@ -15,9 +16,7 @@ class ClaimSummary extends React.Component{
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
-            lstclaims : [
-                { ['Employee Id']: "1", ['Employee Name']: "Test1", ['Claim Number']: "1", ['Claim Type']: "Paid", ['Claim Program']: "Life Insurance", ['Start Date']: "08/12/2020", ['End Date']: "12/12/2020" }
-            ],
+            lstclaims : [],
             selectedclaim : [],
             showUpdateClaim: false,
             selectedIndex: 0
@@ -25,25 +24,35 @@ class ClaimSummary extends React.Component{
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:7001/claims`)
+        // axios.get(`http://localhost:7001/claims`)
+        axios.get('http://localhost:4000/getClaims')
             .then(res => {
                 Logger.of('App.ClaimSummary.componentDidlMount').info('List of claims retreived', res.data);
                 const lstclaims = res.data;
-                // this.setState({ lstclaims });
                 store.dispatch({
                     type: 'ClaimList',
                     payload: lstclaims
                 });
             })
             .catch(error=>{
-                Logger.of('App.UpdateClaim.componentDidMount').error('Error retreiving claim list',error);
+                Logger.of('App.ClaimSummary.componentDidMount').error('Error retreiving claim list',error);
             })
             store.subscribe(()=>{
                 this.setState({
-                    lstclaims: store.getState().claimList
+                    lstclaims: this.props.claimList
                 })
             });
       }
+
+    // componentWillReceiveProps(nextprops){
+    //     console.log(nextprops);
+    //     console.log(this.props);
+    //     if(nextprops != this.props){
+    //         this.setState({
+    //             lstclaims: this.props.claimList
+    //         })
+    //     }
+    // }
 
     updateClaim(claim,index){
         this.setState({
@@ -54,7 +63,7 @@ class ClaimSummary extends React.Component{
     }
 
     generateTableHead() {
-        let header = Object.keys(this.state.lstclaims[0])
+        let header = Object.keys(this.props.claimList[0])
         return header.map((key, index) => {
             return (
                     <th key={index}>{key}</th>
@@ -86,7 +95,7 @@ class ClaimSummary extends React.Component{
     }
       
     generateTableBody() {
-        return this.state.lstclaims.map((claim, index) => {
+        return this.props.claimList.map((claim, index) => {
             const { EmployeeId, EmployeeName, ClaimNumber, ClaimType, ClaimProgram, StartDate, EndDate } = claim; //destructuring
             return (
                     <tr key={index}>
@@ -108,12 +117,12 @@ class ClaimSummary extends React.Component{
                     <table id="tblClaimSummary">
                         <thead>
                             <tr key={"tablehead"}>
-                                {this.generateTableHead()}
+                                {this.props.claimList.length > 0 && this.generateTableHead()}
                                 <th>Update</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {this.generateTableBody()}
+                            {this.props.claimList.length > 0 && this.generateTableBody()}
                         </tbody>
                     </table>
                 </div>
@@ -132,4 +141,12 @@ class ClaimSummary extends React.Component{
     }
 }
 
-export default ClaimSummary
+const MapStateToProps = (state) => {
+    return {
+        claimList: state.claimList,
+    };
+};
+
+export default connect(MapStateToProps)(ClaimSummary);
+
+// export default ClaimSummary
